@@ -1,0 +1,209 @@
+@using StarTrack.Dashboard.Models
+
+@{
+    ViewBag.Title = "Assets Movements";
+}
+@model List<Location>
+    <link href="~/Content/multiselect-master/css/multiselect.css" rel="stylesheet" />
+<style>
+    .locaion-item.hidden {
+        display: none;
+    }
+
+    .locaion-item {
+        cursor: pointer;
+    }
+    .icons{
+        font-size:20px;
+    }
+    .icons.in{
+        color:#ff9191;
+    }
+    .icons.out{
+        color:#F10001;
+    }
+
+</style>
+<script>
+    function selectMultipleChange() {
+        var searchText = getMulitSelected();
+        $('.locaion-item').removeClass('hidden');
+        if (searchText && searchText.length > 0) {
+            var locations = document.getElementsByClassName('locaion-item');
+            for (var i = 0; i < locations.length; i++) {
+                var name = $(locations[i]).children('.header').html();
+                if (searchText.indexOf(name)==-1) {
+                    $(locations[i]).addClass('hidden');
+                }
+            }
+        }
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-3 right-full-div">
+        <div class="full menu">
+            <a class="btn" href="javaScript:toggleDiv('firstDiv')">Filter</a>
+        </div>
+        <div class="full header hidden firstDiv">
+            <select id="searchLocation" class=" slim-select" multiple>
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            </select> 
+        </div>
+        <div id="locations" class=" full scroll-div">
+
+            <br />
+            @foreach (var item in Model)
+            {
+                <section title="Select to view movements" onclick="selectLocation('@item.Id')" class="locaion-item ">
+                    <header class="header">@item.Name</header>
+                    <div>
+                        <div><span>ALL</span> <br /> <span>@item.TotalAsset</span></div>
+                        <div><span>IN</span> <br /> <span>@item.InAsset</span></div>
+                        <div><span>OUT</span> <br /> <span>@item.OutAsset</span></div>
+                        <div><span>MISSING</span> <br /> <span>0</span></div>
+                    </div>
+                </section>
+            }
+
+        </div>
+    </div>
+    <div class="col-md-9 left-full-div">
+        <div class="full menu">
+            <a class="btn" href="javaScript:toggleDiv('secondDiv')">Search And Filter</a>
+        </div>
+        <div class="header hidden secondDiv full">
+            <div class="search-div">
+                <div class="number">
+                    <label for="Id">AssetId</label>
+                    <input class="form-control" type="text" id="Id" title="Asset Id" placeholder="Id" value="" />
+
+                </div>
+                <div>
+                    <label for="Id">Name</label>
+                    <input class="form-control" type="text" id="Name" title="Asset Name" placeholder="Asset Name" />
+                </div>
+                <div>
+                    <label for="Status">Status</label>
+                    <select class="form-control" id="Status" title="Status"><option value="0">ALL</option><option value="1">Normal</option></select>
+                </div>
+                <div>
+                    <label for="Location">Location</label>
+                    <select class="form-control " title="Location" id="Location">
+                        <option value="0">ALL</option>
+                        @foreach (var item in Model)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+
+                </div>
+                <div class="date">
+                    <label for="From">From</label>
+                    <input class="form-control" type="date" id="From" title="From Date" />
+                </div>
+                <div class="date">
+                    <label for="To">To</label>
+                    <input class="form-control" type="date" id="To" title="To Date" />
+
+                </div>
+                <div>
+                    <label for="Direction">Direction</label>
+
+                    <select class="form-control" title="Direction" id="Direction">
+                        <option value="">ALL</option>
+                        <option value="IN">IN</option>
+                        <option value="OUT">OUT</option>
+                    </select>
+
+                </div>
+                <a id="searchBtn" class="btn btn-info">Search</a>
+            </div>
+        </div>
+        <div class="full">
+            <div id="grid"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 ">
+        
+    </div>
+    <div class="col-md-3 hidden sSecondDiv right-full-div">
+<div class="right-full-div"></div>
+    </div>
+    
+</div>
+
+
+<div class="row">
+    
+    <div class="col-md-9">
+
+      
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/multiselect-master/js/multiselect.min.js"></script>
+    <script src="~/Content/multiselect-master/js/select.js"></script>
+    <script>
+        function selectLocation(index) {
+            $('#Location').val(index);
+            search();
+        }
+        function search() {
+            _userDataTable.reload();
+        }
+        var _userDataTable;
+
+        $(document).ready(function () {
+            $("#searchBtn").click(search);
+            var colunms = [];
+            colunms.push({ Text: 'Direction', Name: "IssueDate" });
+            colunms.push({ Text: 'Location', Name: "IdNumber2" });
+            colunms.push({ Text: 'AID', Name: "Id" });
+            colunms.push({ Name: "mutliSelected", IsHidden: true });
+            colunms.push({ Text: 'Name', Name: "Name" });
+            colunms.push({ Text: 'Status', Name: "IdNumber", IsHidden: true });
+            colunms.push({ Text: 'Date', Name: "IssueDate2" });
+            var model =
+            {
+                Attributes: colunms,
+            };
+
+            _userDataTable = addDataTable('grid', model);
+            _userDataTable.getSettingsCallBack = function () {
+                if ($.isEmptyObject(_userDataTable.SearchSettings)) {
+
+                    _userDataTable.SearchSettings.Id = $('#Id').val();
+                    _userDataTable.SearchSettings.Name = $('#Name').val();
+                    _userDataTable.SearchSettings.Status = checkInt($('#Status').val());
+                    _userDataTable.SearchSettings.Location = checkInt($('#Location').val());
+                    _userDataTable.SearchSettings.Direction = $('#Direction').val();
+                    _userDataTable.SearchSettings.From = $('#From').val();;
+                    _userDataTable.SearchSettings.To = $('#To').val();;
+                }
+                return _userDataTable.SearchSettings;
+            };
+            _userDataTable.actionName = _baseUrl + "Home/List";
+            _userDataTable.paging = true;
+            _userDataTable.largeColumns = {
+                width: "35.5%", columns: [1, 4]
+            };
+            _userDataTable.displayLength = 8;
+            _userDataTable.bindGrid();
+            setInterval(function () {
+                    search();
+            }, 2000);
+        });
+
+    </script>
+
+}
+
+

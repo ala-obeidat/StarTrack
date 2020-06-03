@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RFIDModelDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="RFIDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Antinnas" EntityType="RFIDModelDB.Antinna" />
+    <EntitySet Name="Assets" EntityType="RFIDModelDB.Asset" />
+    <EntitySet Name="AssetImages" EntityType="RFIDModelDB.AssetImage" />
+    <EntitySet Name="Categories" EntityType="RFIDModelDB.Category" />
+    <EntitySet Name="Departments" EntityType="RFIDModelDB.Department" />
+    <EntitySet Name="Locations" EntityType="RFIDModelDB.Location" />
+    <EntitySet Name="Movements" EntityType="RFIDModelDB.Movement" />
+    <EntitySet Name="Readers" EntityType="RFIDModelDB.Reader" />
+    <EntitySet Name="Sites" EntityType="RFIDModelDB.Site" />
+    <EntitySet Name="SubAssets" EntityType="RFIDModelDB.SubAsset" />
+    <EntitySet Name="sysdiagrams" EntityType="RFIDModelDB.sysdiagram" />
+    <EntitySet Name="Types" EntityType="RFIDModelDB.Type" />
+    <EntitySet Name="Users" EntityType="RFIDModelDB.User" />
+    <AssociationSet Name="FK_Antinna_Location" Association="RFIDModelDB.FK_Antinna_Location">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Antinna" EntitySet="Antinnas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Antinna_Reader" Association="RFIDModelDB.FK_Antinna_Reader">
+      <End Role="Reader" EntitySet="Readers" />
+      <End Role="Antinna" EntitySet="Antinnas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asset_Category" Association="RFIDModelDB.FK_Asset_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asset_Department" Association="RFIDModelDB.FK_Asset_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asset_Location" Association="RFIDModelDB.FK_Asset_Location">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asset_Location1" Association="RFIDModelDB.FK_Asset_Location1">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asset_Site" Association="RFIDModelDB.FK_Asset_Site">
+      <End Role="Site" EntitySet="Sites" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asset_Type" Association="RFIDModelDB.FK_Asset_Type">
+      <End Role="Type" EntitySet="Types" />
+      <End Role="Asset" EntitySet="Assets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AssetImage_Asset" Association="RFIDModelDB.FK_AssetImage_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="AssetImage" EntitySet="AssetImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Movement_Asset" Association="RFIDModelDB.FK_Movement_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="Movement" EntitySet="Movements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubAsset_Asset" Association="RFIDModelDB.FK_SubAsset_Asset">
+      <End Role="Asset" EntitySet="Assets" />
+      <End Role="SubAsset" EntitySet="SubAssets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Location_Site" Association="RFIDModelDB.FK_Location_Site">
+      <End Role="Site" EntitySet="Sites" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Movement_Location" Association="RFIDModelDB.FK_Movement_Location">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Movement" EntitySet="Movements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reader_Site" Association="RFIDModelDB.FK_Reader_Site">
+      <End Role="Site" EntitySet="Sites" />
+      <End Role="Reader" EntitySet="Readers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Antinna">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReaderId" Type="Int32" Nullable="false" />
+    <Property Name="LocationId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Location" Relationship="RFIDModelDB.FK_Antinna_Location" FromRole="Antinna" ToRole="Location" />
+    <NavigationProperty Name="Reader" Relationship="RFIDModelDB.FK_Antinna_Reader" FromRole="Antinna" ToRole="Reader" />
+  </EntityType>
+  <EntityType Name="Asset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SiteId" Type="Int32" Nullable="false" />
+    <Property Name="LocationId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentId" Type="Int32" />
+    <Property Name="SubAsset" Type="Boolean" Nullable="false" />
+    <Property Name="MultibleSubSelected" Type="Boolean" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TagId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+    <Property Name="Cost" Type="Decimal" Precision="10" Scale="3" />
+    <Property Name="Details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SerialNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+    <Property Name="CurrentLocation" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="RFIDModelDB.FK_Asset_Category" FromRole="Asset" ToRole="Category" />
+    <NavigationProperty Name="Department" Relationship="RFIDModelDB.FK_Asset_Department" FromRole="Asset" ToRole="Department" />
+    <NavigationProperty Name="Location" Relationship="RFIDModelDB.FK_Asset_Location" FromRole="Asset" ToRole="Location" />
+    <NavigationProperty Name="Location1" Relationship="RFIDModelDB.FK_Asset_Location1" FromRole="Asset" ToRole="Location" />
+    <NavigationProperty Name="Site" Relationship="RFIDModelDB.FK_Asset_Site" FromRole="Asset" ToRole="Site" />
+    <NavigationProperty Name="Type" Relationship="RFIDModelDB.FK_Asset_Type" FromRole="Asset" ToRole="Type" />
+    <NavigationProperty Name="AssetImage" Relationship="RFIDModelDB.FK_AssetImage_Asset" FromRole="Asset" ToRole="AssetImage" />
+    <NavigationProperty Name="Movements" Relationship="RFIDModelDB.FK_Movement_Asset" FromRole="Asset" ToRole="Movement" />
+    <NavigationProperty Name="SubAssets" Relationship="RFIDModelDB.FK_SubAsset_Asset" FromRole="Asset" ToRole="SubAsset" />
+  </EntityType>
+  <EntityType Name="AssetImage">
+    <Key>
+      <PropertyRef Name="AssetId" />
+    </Key>
+    <Property Name="AssetId" Type="Int32" Nullable="false" />
+    <Property Name="Path" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Size" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Asset" Relationship="RFIDModelDB.FK_AssetImage_Asset" FromRole="AssetImage" ToRole="Asset" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Assets" Relationship="RFIDModelDB.FK_Asset_Category" FromRole="Category" ToRole="Asset" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Assets" Relationship="RFIDModelDB.FK_Asset_Department" FromRole="Department" ToRole="Asset" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalAsset" Type="Int32" />
+    <Property Name="InAsset" Type="Int32" />
+    <Property Name="OutAsset" Type="Int32" />
+    <Property Name="MissingAsset" Type="Int32" />
+    <NavigationProperty Name="Antinnas" Relationship="RFIDModelDB.FK_Antinna_Location" FromRole="Location" ToRole="Antinna" />
+    <NavigationProperty Name="Assets" Relationship="RFIDModelDB.FK_Asset_Location" FromRole="Location" ToRole="Asset" />
+    <NavigationProperty Name="Assets1" Relationship="RFIDModelDB.FK_Asset_Location1" FromRole="Location" ToRole="Asset" />
+    <NavigationProperty Name="Site" Relationship="RFIDModelDB.FK_Location_Site" FromRole="Location" ToRole="Site" />
+    <NavigationProperty Name="Movements" Relationship="RFIDModelDB.FK_Movement_Location" FromRole="Location" ToRole="Movement" />
+  </EntityType>
+  <EntityType Name="Movement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetId" Type="Int32" Nullable="false" />
+    <Property Name="LocationId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Direction" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Asset" Relationship="RFIDModelDB.FK_Movement_Asset" FromRole="Movement" ToRole="Asset" />
+    <NavigationProperty Name="Location" Relationship="RFIDModelDB.FK_Movement_Location" FromRole="Movement" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="Reader">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="AntinnaCount" Type="Int32" Nullable="false" />
+    <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Antinnas" Relationship="RFIDModelDB.FK_Antinna_Reader" FromRole="Reader" ToRole="Antinna" />
+    <NavigationProperty Name="Site" Relationship="RFIDModelDB.FK_Reader_Site" FromRole="Reader" ToRole="Site" />
+  </EntityType>
+  <EntityType Name="Site">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TagId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Assets" Relationship="RFIDModelDB.FK_Asset_Site" FromRole="Site" ToRole="Asset" />
+    <NavigationProperty Name="Locations" Relationship="RFIDModelDB.FK_Location_Site" FromRole="Site" ToRole="Location" />
+    <NavigationProperty Name="Readers" Relationship="RFIDModelDB.FK_Reader_Site" FromRole="Site" ToRole="Reader" />
+  </EntityType>
+  <EntityType Name="SubAsset">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssetId" Type="Int32" Nullable="false" />
+    <Property Name="TagId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Asset" Relationship="RFIDModelDB.FK_SubAsset_Asset" FromRole="SubAsset" ToRole="Asset" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Assets" Relationship="RFIDModelDB.FK_Asset_Type" FromRole="Type" ToRole="Asset" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Flag" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MobileNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Antinna_Location">
+    <End Type="RFIDModelDB.Location" Role="Location" Multiplicity="1" />
+    <End Type="RFIDModelDB.Antinna" Role="Antinna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Antinna">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Antinna_Reader">
+    <End Type="RFIDModelDB.Reader" Role="Reader" Multiplicity="1" />
+    <End Type="RFIDModelDB.Antinna" Role="Antinna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reader">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Antinna">
+        <PropertyRef Name="ReaderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asset_Category">
+    <End Type="RFIDModelDB.Category" Role="Category" Multiplicity="1" />
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asset_Department">
+    <End Type="RFIDModelDB.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asset_Location">
+    <End Type="RFIDModelDB.Location" Role="Location" Multiplicity="1" />
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asset_Location1">
+    <End Type="RFIDModelDB.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="CurrentLocation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asset_Site">
+    <End Type="RFIDModelDB.Site" Role="Site" Multiplicity="1" />
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="SiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asset_Type">
+    <End Type="RFIDModelDB.Type" Role="Type" Multiplicity="1" />
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Asset">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AssetImage_Asset">
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="1" />
+    <End Type="RFIDModelDB.AssetImage" Role="AssetImage" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssetImage">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Movement_Asset">
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="1" />
+    <End Type="RFIDModelDB.Movement" Role="Movement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Movement">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubAsset_Asset">
+    <End Type="RFIDModelDB.Asset" Role="Asset" Multiplicity="1" />
+    <End Type="RFIDModelDB.SubAsset" Role="SubAsset" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asset">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubAsset">
+        <PropertyRef Name="AssetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Location_Site">
+    <End Type="RFIDModelDB.Site" Role="Site" Multiplicity="1" />
+    <End Type="RFIDModelDB.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="SiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Movement_Location">
+    <End Type="RFIDModelDB.Location" Role="Location" Multiplicity="1" />
+    <End Type="RFIDModelDB.Movement" Role="Movement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Movement">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reader_Site">
+    <End Type="RFIDModelDB.Site" Role="Site" Multiplicity="1" />
+    <End Type="RFIDModelDB.Reader" Role="Reader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reader">
+        <PropertyRef Name="SiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,6 @@
+D:\G\Work\Code\drive-download-20200324T230023Z-001\AssetDashboard\StartTrack.DB\bin\Debug\StartTrack.DB.dacpac
+D:\G\Work\Code\drive-download-20200324T230023Z-001\AssetDashboard\StartTrack.DB\bin\Debug\StartTrack.DB.dll
+D:\G\Work\Code\drive-download-20200324T230023Z-001\AssetDashboard\StartTrack.DB\bin\Debug\StartTrack.DB.pdb
+D:\G\Work\Code\drive-download-20200324T230023Z-001\AssetDashboard\StartTrack.DB\obj\Debug\StartTrack.DB.sqlprojAssemblyReference.cache
+D:\G\Work\Code\drive-download-20200324T230023Z-001\AssetDashboard\StartTrack.DB\obj\Debug\StartTrack.DB.dll
+D:\G\Work\Code\drive-download-20200324T230023Z-001\AssetDashboard\StartTrack.DB\obj\Debug\StartTrack.DB.pdb

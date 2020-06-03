@@ -1,0 +1,149 @@
+﻿#o-m-loader, #o-m-loader > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#o-m-loader {
+    position: fixed;
+    z-index: 9235;
+}
+
+#o-m-loader {
+    position: fixed;
+    z-index: 9235;
+}
+
+.m-loader {
+    background: url(../../assets/images/loader.gif) no-repeat center center;
+    z-index: 299;
+}
+
+
+.m-opacity {
+    background: #fff;
+    opacity: 0.5;
+    z-index: 99998;
+}
+
+@font-face {
+    font-family: kofi;
+    src: url(../../assets/font/DroidKufi/DroidKufi-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: kofi;
+    src: url(../../assets/font/DroidKufi/DroidKufi-Bold.ttf);
+    font-weight: bold;
+}
+
+html {
+    font-family: kofi !important;
+}
+
+body {
+    font-size: 12px !important;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+select.form-control, input.form-control {
+    height: 40px !important;
+}
+
+.form-horizontal label.control-label {
+    text-align: left !important;
+}
+
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11 {
+    float: right !important;
+}
+
+th {
+    text-align: right !important;
+}
+
+ul.nav.navbar-nav {
+    transform: rotate(180deg);
+    float: right;
+}
+
+input.jscolor {
+    cursor: pointer;
+}
+
+a.lang-link {
+    line-height: 45px;
+}
+
+ul.nav.navbar-nav > li {
+    transform: rotate(-180deg);
+}
+
+.error {
+    border: 2px solid red;
+}
+
+span.error-span {
+    font-size: small;
+    color: red;
+}
+
+#searchDiv {
+    padding: 6px 20px;
+}
+
+    #searchDiv *:not(.isolate) {
+        font-weight: bold;
+        display: inline-table;
+    }
+
+    #searchDiv *:not([type=button]) {
+        width: 20%;
+    }
+
+    #searchDiv input[type=button] {
+        width: 10%;
+    }
+
+input[type=checkbox].big-checkbox {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+table.table {
+    border: 1px solid;
+}
+
+    table.table thead {
+        background-color: #ccc;
+    }
+
+.navbar-fixed-top {
+    padding-right: 120px;
+}
+
+.navbar.navbar-fixed-top {
+    background-color: #ED2226;
+}
+
+body > div.navbar.navbar-fixed-top > div > div.navbar-collapse.collapse > ul > li > a, a.lang-link {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+h2 {
+    background-color: #939192;
+    color: red;
+    padding-right: 50px;
+}

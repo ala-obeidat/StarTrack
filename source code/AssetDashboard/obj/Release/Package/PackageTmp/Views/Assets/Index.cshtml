@@ -1,0 +1,704 @@
+﻿@model StarTrack.Dashboard.Models.AssetFullModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    div.added-list-div {
+        border: solid;
+        padding: 10px;
+        width: 90%;
+        margin: 15px;
+    }
+
+    .form-inline {
+        margin-bottom: 5px;
+    }
+
+        .form-inline .form-control {
+            width: 100%;
+        }
+
+    .list-add {
+        float: right;
+    }
+
+
+
+    select.full {
+        width: 100% !important;
+    }
+
+    #ImageFile {
+        font-size: 11px;
+    }
+
+    label.control-label {
+        font-size: small;
+        float: right;
+        text-align: right;
+        padding: 0;
+        margin: 0;
+    }
+
+    .list-add > a {
+        width: 38px;
+        height: 38px;
+        text-decoration: none;
+        border: 1px solid #ccc;
+        display: block;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 3px;
+        font-weight: bolder;
+        margin: 0 5px;
+    }
+
+    div.added-list-div a {
+        margin: 5px;
+    }
+
+    select.form-control.added-select-div {
+        width: 83.3%;
+        float: left;
+    }
+
+    input.check-box {
+        width: 30px;
+        height: 30px;
+    }
+
+    #SiteIdAdded label {
+        float: left;
+    }
+
+    #Status1 {
+        width: 100%;
+    }
+
+    #assetAction {
+    }
+
+    #assetLogo {
+        margin-left: 5%;
+    }
+
+    .view-form label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .view-form ul li {
+        margin: 0;
+        padding: 0;
+        height: 22px;
+    }
+
+    #assetLogov {
+        width: 99%;
+    }
+</style>
+<div class="row">
+    <div class="col-md-3 right-full-div">
+        <div class="full menu">
+            <a id="assetAction" class="btn" href="javaScript:createAsset()">Create New Asset</a>
+            <a id="assetEdit" class="btn hidden" href="javaScript:editAsset()">Edit</a>
+        </div>
+        <div class="full header hidden firstDiv">
+            <div id="form-dirst-div" class="full">
+                @using (Html.BeginForm("CreatePost", "Assets", FormMethod.Post, new { id = "mainForm", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-horizontal scroll-div" id="formDiv">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <input value="" type="hidden" name="DepartmentName" id="DepartmentName" />
+                    <input value="" type="hidden" name="TypeName" id="TypeName" />
+                    <input value="" type="hidden" name="LocationName" id="LocationName" />
+                    <input value="" type="hidden" name="LocationDetail" id="LocationDetail" />
+
+                    <input value="" type="hidden" name="CategoryName" id="CategoryName" />
+                    <input value="" type="hidden" name="DepartmentDetail" id="DepartmentDetail" />
+                    <input value="" type="hidden" name="TypeDetail" id="TypeDetail" />
+                    <input value="" type="hidden" name="CategoryDetail" id="CategoryDetail" />
+                    <input value="" type="hidden" name="SiteName" id="SiteName" />
+                    <input value="" type="hidden" name="SiteTagId" id="SiteTagId" />
+                    <input value="" type="hidden" name="SiteDetail" id="SiteDetail" />
+                    <input value="" type="hidden" name="SiteStreet" id="SiteStreet" />
+                    <input value="" type="hidden" name="SiteCity" id="SiteCity" />
+                    <input value="" type="hidden" name="SiteState" id="SiteState" />
+                    <input value="" type="hidden" name="SitePostalCode" id="SitePostalCode" />
+                    <input value="" type="hidden" name="SiteCountry" id="SiteCountry" />
+                    <input value="" type="hidden" name="SiteStatus" id="SiteStatus" />
+
+
+                    <input value="" type="hidden" name="SubAssetListTagId0" id="SubAssetListTagId0" />
+                    <input value="" type="hidden" name="SubAssetListTagId1" id="SubAssetListTagId1" />
+                    <input value="" type="hidden" name="SubAssetListTagId2" id="SubAssetListTagId2" />
+                    <input value="" type="hidden" name="SubAssetListTagId3" id="SubAssetListTagId3" />
+                    <input value="" type="hidden" name="SubAssetListTagId4" id="SubAssetListTagId4" />
+                    <input value="" type="hidden" name="SubAssetListTagId5" id="SubAssetListTagId5" />
+                    <input value="" type="hidden" name="SubAssetListTagId6" id="SubAssetListTagId6" />
+                    <input value="" type="hidden" name="SubAssetListTagId7" id="SubAssetListTagId7" />
+                    <input value="" type="hidden" name="SubAssetListTagId8" id="SubAssetListTagId8" />
+                    <input value="" type="hidden" name="SubAssetListTagId9" id="SubAssetListTagId9" />
+
+                    <input value="" type="hidden" name="SubAssetListName0" id="SubAssetListName0" />
+                    <input value="" type="hidden" name="SubAssetListName1" id="SubAssetListName1" />
+                    <input value="" type="hidden" name="SubAssetListName2" id="SubAssetListName2" />
+                    <input value="" type="hidden" name="SubAssetListName3" id="SubAssetListName3" />
+                    <input value="" type="hidden" name="SubAssetListName4" id="SubAssetListName4" />
+                    <input value="" type="hidden" name="SubAssetListName5" id="SubAssetListName5" />
+                    <input value="" type="hidden" name="SubAssetListName6" id="SubAssetListName6" />
+                    <input value="" type="hidden" name="SubAssetListName7" id="SubAssetListName7" />
+                    <input value="" type="hidden" name="SubAssetListName8" id="SubAssetListName8" />
+                    <input value="" type="hidden" name="SubAssetListName9" id="SubAssetListName9" />
+
+                    <div id="saveBtn" class="form-inline">
+                    </div>
+                    <div id="idDiv" class="form-inline">
+                        <label for="Id" class="control-label col-md-2">Id</label>
+                        <div class="col-md-10">
+                            <h4>Edit Asset</h4>
+                            <input id="Id" value="0" name="Id" class="form-control" readonly />
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label for="AID" class="control-label col-md-2 require-star">Asset ID</label>
+                        <div class="col-md-10">
+                            <input id="AssetId" name="AssetId" class="form-control required" />
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label for="Name" class="control-label col-md-2 require-star">Name</label>
+                        <div class="col-md-10">
+                            <input id="Name" name="Name" class="form-control required" />
+                        </div>
+                    </div>
+
+                    <div class="form-inline">
+                        <label for="SerialNumber" class="control-label col-md-2 require-star">Serial Number</label>
+
+                        <div class="col-md-10">
+                            <input type="text" id="SerialNumber" name="SerialNumber" class="form-control required" />
+                        </div>
+                    </div>
+                    <div class="form-inline" id="CategoryIdDiv">
+                        <label for="CategoryId" class="control-label col-md-2 require-star">Category</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("CategoryId", Model.CategoryList, "----", htmlAttributes: new { @class = "form-control required2 added-select-div" })
+                            <div id="CategoryIdAddDiv" title="add New" class=" list-add"><a class="btn btn-primary" href="javaScript:addList('CategoryId')">+</a></div>
+                        </div>
+                    </div>
+
+                    <div class="form-inline" id="TypeIdDiv">
+                        <label for="TypeId" class="control-label col-md-2 require-star">Type</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("TypeId", Model.TypeList, "----", htmlAttributes: new { @class = "form-control required2 added-select-div" })
+                            <div id="TypeIdAddDiv" title="add New" class=" list-add"><a class="btn btn-primary" href="javaScript:addList('TypeId')">+</a></div>
+                        </div>
+                    </div>
+                    <div class="form-inline" id="SiteIdDiv">
+                        <label for="SiteId" class="control-label col-md-2 require-star">Site</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("SiteId", Model.SiteList, "----", htmlAttributes: new { @class = "form-control required2 added-select-div" })
+                            <div id="SiteIdAddDiv" title="add New" class="list-add"><a class="btn btn-primary" href="javaScript:addSite('SiteId')">+</a></div>
+                        </div>
+                    </div>
+                    <div class="form-inline" id="LocationIdDiv">
+                        <label for="LocationId" class="control-label col-md-2 require-star">Location</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("LocationId", Model.LocationList, "----", htmlAttributes: new { @class = "form-control required2 added-select-div" })
+                            <div id="LocationIdAddDiv" title="add New" class=" list-add"><a class="btn btn-primary" href="javaScript:addList('LocationId')">+</a></div>
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label for="TagId" class="control-label col-md-2">Tag ID</label>
+                        <div class="col-md-10">
+                            <input id="TagId" name="TagId" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label for="Cost" class="control-label col-md-2">Cost</label>
+
+                        <div class="col-md-10">
+                            <input type="text" id="Cost" name="Cost" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label for="Details" class="control-label col-md-2">Details</label>
+                        <div class="col-md-10">
+                            <textarea id="Details" name="Details" class="form-control" rows="2" cols="22"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-inline">
+                        <label for="Status" class="control-label col-md-2">Status</label>
+
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Status, "----", htmlAttributes: new { @class = "form-control full" })
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label for="PurchaseDate" class="control-label col-md-2">Purchase Date</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="date" name="PurchaseDate" id="PurchaseDate" />
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label for="ExpireDate" class="control-label col-md-2">Expirey Date</label>
+
+                        <div class="col-md-10">
+                            <input class="form-control" type="date" name="ExpireDate" id="ExpireDate" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-inline" id="DepartmentIdDiv">
+                        <label for="DepartmentId" class="control-label col-md-2">Department</label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("DepartmentId", Model.DepartmentList, "----", htmlAttributes: new { @class = "form-control added-select-div" })
+                            <div id="DepartmentIdAddDiv" title="add New" class=" list-add"><a class="btn btn-primary" href="javaScript:addList('DepartmentId')">+</a></div>
+                        </div>
+                    </div>
+                    <div class="form-inline">
+                        <label for="assetLogo" class="control-label col-md-2">Image</label>
+                        <div class="col-md-10">
+                            <input title="Upload New Logo" type="file" name="ImageFile" id="ImageFile" accept="image/*" />
+
+                            <img width="60" id="assetLogo" src="~/images/asset.png" />
+                        </div>
+                    </div>
+
+                    <div class="row" col-md-12>
+                        <div class="col-md-6 hidden">
+                            <label for="SubAsset" class="control-label col-md-12">Sub Assets</label>
+                            <div class="col-md-8">
+                                <div class="">
+                                    <input type="checkbox" class="check-box" id="SubAsset" name="SubAsset" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 MultibleSubSelectedDiv hidden">
+                            <label for="MultibleSubSelected" class="control-label col-md-12">Multible Selected</label>
+                            <div class="col-md-8">
+                                <div class="">
+                                    <input type="checkbox" class="check-box" id="MultibleSubSelected" name="MultibleSubSelected" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group MultibleSubSelectedDiv">
+                        <h5>Sub Assets</h5>
+                        <a class="add-subAsset btn btn-secondary" href="javaScript:addNewSubAssets()">+ Add New</a>
+                        <table id="subAssetTable" border="1" cellpadding="10" cellspacing="5">
+
+                            <tr>
+                                <th>No.</th>
+                                <th width="250px">Name</th>
+                                <th width="450px">TagId</th>
+                                <th>DELETE</th>
+                            </tr>
+                            <tr id="row0">
+                                <td>1</td>
+                                <td id="firstTd" contenteditable="true"></td>
+                                <td id="secondTd" contenteditable="true"></td>
+                                <td><a title="Delete" href="javaScript:deleteSubAssets(0)" class="btn btn-danger delete-subAsset">X</a></td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+                </div>
+                    <div class="form-inline">
+                        <div class="col-md-6">
+                            <a class="btn btn-info full" href="javaScript:suForm()">Save</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="btn btn-primary full" href="javaScript:resetForm()">Cancel</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div id="view-div" class="full hidden">
+                <div class="form-horizontal scroll-div">
+                    <div class="view-form">
+                        <ul>
+                            <li><label>Asset ID</label><span id="AssetIdv"></span></li>
+                            <li><label>Name</label><span id="Namev"></span></li>
+                            <li><label>Tag ID</label><span id="TagIdv"></span></li>
+                            <li><label>Serial Number</label><span id="SerialNumberv"></span></li>
+                            <li><label>Category</label><span id="CategoryIdv"></span></li>
+                            <li><label>Type</label><span id="TypeIdv"></span></li>
+                            <li><label>Site</label><span id="SiteIdv"></span></li>
+                            <li><label>Location</label><span id="LocationIdv"></span></li>
+                            <li><label>Cost</label><span id="Costv"></span></li>
+                            <li><label>Details</label><span id="Detailsv"></span></li>
+                            <li><label>Status</label><span id="Statusv"></span></li>
+                            <li><label>Purchase Date</label><span id="PurchaseDatev"></span></li>
+                            <li><label>Expire Date</label><span id="ExpireDatev"></span></li>
+                            <li><label>Department</label><span id="DepartmentIdv"></span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img id="assetLogov" src="~/images/asset.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 left-full-div">
+        <div class="full menu">
+            <a class="btn" href="javaScript:toggleDiv('secondDiv')">Search And Filter</a>
+        </div>
+        <div class="full header hidden secondDiv">
+            <div class="search-div">
+                <div class="number">
+                    <label for="Ids">AssetId</label>
+                    <input class="form-control" type="text" id="Ids" title="Asset Id" placeholder="Id" value="" />
+                </div>
+                <div>
+                    <label for="Ids">Name</label>
+                    <input class="form-control" type="text" id="Names" title="Asset Name" placeholder="Asset Name" />
+                </div>
+                <div>
+                    <label for="TagIds">TagId</label>
+                    <input class="form-control" type="text" id="TagIds" title="Asset TagId" placeholder="TagId" />
+                </div>
+                <div>
+                    <label for="Statuss">Status</label>
+                    <select class="form-control" id="Statuss" title="Status">
+                    <option value="0">ALL</option>
+                    <option value="1">Normal</option>
+                    <option value="3">Expired</option>
+                    </select>
+                </div>
+                <div class="date">
+                    <label for="CreateDates">Created Date</label>
+                    <input class="form-control" type="date" id="CreateDates" title="Created Date" />
+                </div>
+                <a id="searchBtn" class="btn btn-info">Search</a>
+            </div>
+        </div>
+        <div class="full">
+            <div id="grid"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        function search() {
+            _userDataTable.reload();
+        }
+        var _userDataTable;
+
+        $(document).ready(function () {
+            $("#searchBtn").click(search);
+            var colunms = [];
+            colunms.push({ Text: 'Asset ID', Name: "Id" });
+            colunms.push({ Name: "mutliSelected", IsHidden: true });
+            colunms.push({ Text: 'Logo', Name: "IdNumber" });
+            colunms.push({ Text: 'Asset Name', Name: "Name" });
+            colunms.push({ Text: 'Current Location', Name: "Location" });
+            colunms.push({ Text: 'Tag ID', Name: "IssueDate2" });
+            colunms.push({ Text: 'Category', Name: "IssueDate3" });
+            colunms.push({ Text: 'Department', Name: "IssueDate4", IsHidden: true });
+            colunms.push({ Text: 'Type', Name: "IssueDate5" });
+            colunms.push({ Text: 'Cost', Name: "IssueDate5", IsHidden: true });
+            colunms.push({ Text: 'Purchase Date', Name: "IssueDate5", IsHidden: true });
+            colunms.push({ Text: 'Status', Name: "IdNumber2" });
+
+            colunms.push({ Text: 'Created Date', Name: "IssueDate" });
+
+
+            var model =
+            {
+                Attributes: colunms,
+            };
+
+            _userDataTable = addDataTable('grid', model);
+            _userDataTable.getSettingsCallBack = function () {
+                if ($.isEmptyObject(_userDataTable.SearchSettings)) {
+
+                    _userDataTable.SearchSettings.Id = $('#Ids').val();
+                    _userDataTable.SearchSettings.Name = $('#Names').val();
+                    _userDataTable.SearchSettings.Status = checkInt($('#Statuss').val());
+                    _userDataTable.SearchSettings.TagId = $('#TagIds').val();
+                    _userDataTable.SearchSettings.CreateDate = $('#CreateDates').val();;
+                }
+                return _userDataTable.SearchSettings;
+            };
+            _userDataTable.actionName = _baseUrl + "Assets/List";
+            _userDataTable.paging = true;
+            _userDataTable.displayLength = 8;
+            _userDataTable.largeColumns = {
+                width: "23%", columns: [3, 4]
+            };
+            _userDataTable.bindGrid();
+        });
+
+    </script>
+
+}
+<script>
+    function createAsset() {
+        toggleDiv('firstDiv')
+        if ($('#Status').val() == '0')
+            $('#Status').val('1');
+    }
+    function resetForm() {
+        $('#mainForm').trigger("reset");
+        $('#assetAction').html('Create New Asset');
+        $('.firstDiv').addClass('hidden');
+        removeErrors('#mainForm');
+        $('#Status').val('0');
+    }
+    function suForm() {
+        $('#mainForm').submit();
+    }
+    function editAsset() {
+        $('#form-dirst-div').show();
+        $('#assetAction').html('Edit Asset');
+        $('#view-div').addClass('hidden');
+        $('#assetEdit').addClass('hidden');
+
+    }
+    function viewAsset(id) {
+        ajaxCall(getRequestModel(true, 'Assets/Details/' + id, null, function (data) {
+            $('#saveBtn').hide();
+            removeErrors('#mainForm');
+            $('#form-dirst-div').hide();
+            $('#view-div').removeClass('hidden');
+            $('#assetAction').html('Asset Detail');
+            $('.firstDiv').removeClass('hidden');
+            $('#assetEdit').removeClass('hidden');
+            const entries = Object.entries(data);
+            for (var i = 0; i < entries.length; i++) {
+                if (document.getElementById(entries[i][0])) {
+                    $('#' + entries[i][0]).val(entries[i][1]);
+                    $('#' + entries[i][0] + 'v').html(entries[i][1]);
+                }
+            }
+            if (data.AssetImage && data.AssetImage.Path) {
+                $('#assetLogo').attr('src', data.AssetImage.Path);
+                $('#assetLogov').attr('src', data.AssetImage.Path);
+            }
+            if (data.DepartmentId == 0) {
+                $('#DepartmentIdv').html('');
+            }
+            else {
+                $('#DepartmentIdv').html(checkSelectName(data.DepartmentId, 'DepartmentId'));
+
+            }
+            $('#CategoryIdv').html(checkSelectName(data.CategoryId, 'CategoryId'));
+            $('#LocationIdv').html(checkSelectName(data.LocationId, 'LocationId'));
+            $('#SiteIdv').html(checkSelectName(data.SiteId, 'SiteId'));
+            $('#TypeIdv').html(checkSelectName(data.TypeId, 'TypeId'));
+            $('#Statusv').html(checkSelectName(data.Status, 'Status'));
+            if (data.Cost == 0) {
+                $('#Costv').html('');
+                $('#Cost').val('');
+            }
+            $('#PurchaseDate').val(checkDate(data.PurchaseDateString));
+            $('#PurchaseDatev').html(checkDate(data.PurchaseDateString));
+            $('#ExpireDate').val(checkDate(data.ExpireDateString));
+            $('#ExpireDatev').html(checkDate(data.ExpireDateString));
+
+            //if (data.SubAsset && data.SubAssets && data.SubAssets.length) {
+            //    $('#SubAsset').prop('checked', true);
+            //    $('#MultibleSubSelected').prop('checked', data.MultibleSubSelected);
+            //    $('.MultibleSubSelectedDiv').show();
+            //    $('#firstTd').html(data.SubAssets[0].Name);
+            //    $('#secondTd').html(data.SubAssets[0].TagId);
+            //    for (var j = 1; j < data.SubAssets.length; j++) {
+            //        addNewSubAssets(data.SubAssets[j]);
+            //    }
+            //}
+            document.getElementById('formDiv').scrollTop = 0;
+        }, null, 'GET'));
+    }
+    var _subAssetIndex = 0;
+    function addNewSubAssets(data) {
+        if (!data) {
+            data = {};
+            data.Name = '';
+            data.TagId = '';
+        }
+        if (_subAssetIndex == 9) {
+            alert('You can not add more than 9 sub asset');
+            return;
+        }
+        _subAssetIndex++;
+        $('#subAssetTable').append(`<tr id="row` + _subAssetIndex + `" >
+                <td>`+ (_subAssetIndex + 1) + `</td>
+                <td contenteditable="true">`+ data.Name + `</td>
+                <td contenteditable="true">`+ data.TagId + `</td>
+                <td><a title="Delete" href="javaScript:deleteSubAssets(`+ _subAssetIndex + `)" class="btn btn-danger delete-subAsset" >X</a></td>
+            </tr>`);
+    }
+    function deleteSubAssets(index) {
+        if (_subAssetIndex == 0) {
+            alert('There is no sub asset to delete');
+            return;
+        }
+        $('#row' + index).remove();
+    }
+    function calculateSubAssets() {
+        if ($('tr#row0 td:nth-child(2)').length) {
+            var firstNameHtml = $('tr#row0 td:nth-child(2)').html();
+            if (firstNameHtml && firstNameHtml.length) {
+                _subAssetIndex++;
+            }
+        }
+
+        for (var i = 0; i < _subAssetIndex; i++) {
+            var name = $('tr#row' + i + ' td:nth-child(2)').html();
+            var tagId = $('tr#row' + i + ' td:nth-child(3)').html()
+            if (name && name.length > 0 && tagId && tagId.length > 0) {
+                $('#SubAssetListTagId' + i).val(tagId);
+                $('#SubAssetListName' + i).val(name);
+            }
+        }
+    }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#assetLogo').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#ImageFile").change(function () {
+        readURL(this);
+    });
+    function addList(id) {
+        var temHtml = `<div class="added-list-div" id='` + id + `Added' > <h3>Add New</h3>
+        <div class="col-md-12 row">
+            <div class="col-md-2">
+                <label for="Name1">Name</label>
+            </div>
+            <div class="col-md-10" >
+                <input type="text" class="form-control" id="Name1" Placeholder="Enter the name" />
+            </div>
+        </div>
+        <br />
+        <div class="col-md-12 row">
+            <div class="col-md-2">
+                <label for="Detail2">Detail</label>
+            </div>
+            <div class="col-md-10" >
+                <textarea id="Detail1" Placeholder="Enter the details" class="form-control" rows="2" cols="22"></textarea>
+            </div>
+        </div>
+        <div class="col-md-10"><a class="btn btn-primary" href="javaScript:SaveAdd('`+ id + `')">Save</a><a class="btn btn-danger" href="javaScript:cancelAdd('` + id + `')">cancel</a></div></div>
+        `;
+        $('#' + id + 'Div').append(temHtml);
+        $('#' + id + 'AddDiv').hide();
+    }
+    function addSite(id) {
+        var temHtml = `<div class="added-list-div" id='` + id + `Added' > <h3>Add New</h3>
+        <label for="Name1"> Name:</label><div class="col-md-10" ><input type="text" class="form-control" id="Name1" Placeholder="Enter the name" /> </div>
+        <label for="City1"> City:</label><div class="col-md-10" ><input type="text" class="form-control" id="City1"  /> </div>
+        <label for="Country1"> Country:</label><div class="col-md-10" ><input type="text" class="form-control" id="Country1"  /> </div>
+        <label for="PostalCode1"> Postal Code:</label><div class="col-md-10" ><input type="text" class="form-control" id="PostalCode1" /> </div>
+        <label for="State1"> State:</label><div class="col-md-10" ><input type="text" class="form-control" id="State1"  /> </div>
+        <label for="Status1"> Status:</label><div class="col-md-10" ><select class="form-control" id="Status1"><option value="1">Normal</option></select> </div>
+
+        <label for="Street1"> Street:</label><div class="col-md-10" ><input type="text" class="form-control" id="Street1"  /> </div>
+        <label for="TagId1"> TagId:</label><div class="col-md-10" ><input type="text" class="form-control" id="TagId1" /> </div>
+        <label for="Detail2"> Detail:</label>
+        <div class="col-md-10" ><textarea id="Detail1" Placeholder="Enter the details" class="form-control" rows="2" cols="22"></textarea></div>
+        <div class="col-md-10"><a class="btn btn-primary" href="javaScript:SaveSite('`+ id + `')">Save</a><a class="btn btn-danger" href="javaScript:cancelAdd('` + id + `')">cancel</a></div></div>
+        `;
+        $('#' + id + 'Div').append(temHtml);
+        $('#' + id + 'AddDiv').hide();
+    }
+    function cancelAdd(id) {
+        $('#' + id + 'Added').remove();
+        $('#' + id + 'AddDiv').show();
+    }
+    function SaveAdd(divId) {
+        var id = divId.replace('Id', '');
+        var item = {};
+        item.Name = $('#Name1').val();
+        item.Detail = $('#Detail1').val();
+        item.Type = id;
+        $("#" + divId).append(new Option(item.Name, "-1"));
+
+        cancelAdd(divId);
+        $("#" + divId).val('-1');
+        switch (item.Type) {
+            case 'Type':
+                document.getElementById("TypeName").value = item.Name;
+                document.getElementById("TypeDetail").value = item.Detail;
+                break;
+            case 'Category':
+                document.getElementById("CategoryName").value = item.Name;
+                document.getElementById("CategoryDetail").value = item.Detail;
+                break;
+            case 'Department':
+                document.getElementById("DepartmentName").value = item.Name;
+                document.getElementById("DepartmentDetail").value = item.Detail;
+                break;
+            case 'Location':
+                document.getElementById("LocationName").value = item.Name;
+                document.getElementById("LocationDetail").value = item.Detail;
+                break;
+            default:
+        }
+    }
+    function SaveSite(divId) {
+        var siteToSave = {};
+        siteToSave.City = $('#City1').val();
+        siteToSave.Country = $('#Country1').val();
+        siteToSave.PostalCode = $('#PostalCode1').val();
+        siteToSave.Name = $('#Name1').val();
+        siteToSave.State = $('#State1').val();
+        siteToSave.Status = $('#Status1').val();
+        siteToSave.Street = $('#Street1').val();
+        siteToSave.TagId = $('#TagId1').val();
+        siteToSave.Detail = $('#Detail1').val();
+        document.getElementById("SiteName").value = siteToSave.Name;
+        document.getElementById("SiteTagId").value = siteToSave.TagId;
+        document.getElementById("SiteDetail").value = siteToSave.Detail;
+        document.getElementById("SiteStreet").value = siteToSave.Street;
+        document.getElementById("SiteCity").value = siteToSave.City;
+        document.getElementById("SiteState").value = siteToSave.State;
+        document.getElementById("SitePostalCode").value = siteToSave.PostalCode;
+        document.getElementById("SiteCountry").value = siteToSave.Country;
+        document.getElementById("SiteStatus").value = siteToSave.Status;
+
+        $("#" + divId).append(new Option(siteToSave.Name, "-1"));
+        cancelAdd(divId);
+        $("#" + divId).val('-1');
+    }
+    $(document).ready(function () {
+        $('.MultibleSubSelectedDiv').hide();
+        $('#idDiv').hide();
+        $('#saveBtn').show();
+        $('#SubAsset').change(function () {
+            $('.MultibleSubSelectedDiv').toggle();
+        });
+        $('#mainForm').submit(function () {
+            if (!isValid('#mainForm')) {
+                return false;
+            }
+            showLoader();
+            if ($('#SubAsset').prop('checked')) {
+                $('#SubAsset').val('true');
+                if ($('#MultibleSubSelected').prop('checked')) {
+                    $('#MultibleSubSelected').val('true');
+                }
+                calculateSubAssets();
+            }
+        });
+    });
+</script>

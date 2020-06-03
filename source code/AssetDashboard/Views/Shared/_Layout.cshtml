@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel='icon' href='favicon.ico' type='image/x-icon' />
+    <title>StarTrack @@ ALB - Kingscote</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <script>
+        var _baseUrl = window.location.protocol + '//' + window.location.host + '/';
+        var _isRtl = false;
+        var _userType = 'Active';
+        var _lan = _isRtl ? 'ar' : 'en';
+        var _requiredTxt = 'This field is required';
+        var _deleteTxt = 'Delete';
+        var _addTxt = 'Add New';
+        var _editTxt = 'Edit';
+        var _documentText = '_documentText';
+        var _propertiesText = '_documentText';
+        var _DeleteText = _deleteTxt;
+        var _orderPage = _userType != 'Active';
+        var _name = 'Name';
+        var _generalErrorMessage = 'General Error';
+        var _generalSuccess = 'The process done successfully';
+        var _okText = 'Ok';
+        var _cancelText = 'Cancel';
+        var _noteText = 'Note';
+        var _errorText = 'Error';
+    </script>
+    @Styles.Render("~/Content/bundle")
+    @Scripts.Render("~/Scripts/bundle")
+    <style>
+
+        @@media (min-width: 1300px) {
+            .container, .container-sm, .container-md, .container-lg, .container-xl {
+                max-width: 99%;
+            }
+        }
+
+        @@media (min-height: 450px) {
+            .scroll-div {
+                height: 400px;
+            }
+        }
+
+        @@media (min-height: 650px) {
+            .scroll-div {
+                height: 500px;
+            }
+        }
+
+        @@media (min-height: 750px) {
+            .scroll-div {
+                height: 600px;
+            }
+        }
+
+        @@media (min-height: 850px) {
+            .scroll-div {
+                height: 700px;
+            }
+        }
+        @@media (min-height: 950px) {
+            .scroll-div {
+                height: 800px;
+            }
+        }
+        @@media (min-height: 1050px) {
+            .scroll-div {
+                height: 900px;
+            }
+        }
+        .scroll-div {
+            overflow-y: auto;
+        }
+
+        .left-div, .right-full-div {
+            border-right: 0.5px solid #ccc;
+        }
+
+        div.right-full-div, div.left-full-div {
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        div.full {
+            width: 100% !important;
+        }
+
+        footer > div > div {
+            display: inline-block;
+        }
+
+        .search-div {
+        }
+
+            .search-div > div {
+                display: inline-block;
+                width: 12%;
+            }
+
+                .search-div > div.number {
+                    width: 8%;
+                }
+
+                .search-div > div.date {
+                    width: 16%;
+                }
+
+                .search-div > div > * {
+                    margin: 0;
+                }
+
+                .search-div > div > .form-control {
+                }
+
+                .search-div > div > select {
+                }
+
+                .search-div > div > input[type="text"] {
+                }
+
+                .search-div > div > input[type="number"].form-control {
+                }
+
+                .search-div > div > input[type="date"].form-control {
+                    width: 100% !important;
+                }
+
+                .search-div > div > input {
+                }
+
+        #o-m-loader, #o-m-loader > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #o-m-loader {
+            position: fixed;
+            z-index: 9235;
+        }
+
+        #o-m-loader {
+            position: fixed;
+            z-index: 9235;
+        }
+
+        .m-loader {
+            background: url(../../images/loader.gif) no-repeat center center;
+            z-index: 299;
+        }
+
+
+        .m-opacity {
+            background: #fff;
+            opacity: 0.5;
+            z-index: 99998;
+        }
+
+        div.header {
+            padding: 5px;
+            min-height: 75px;
+            background-color: #f4f4f4;
+        }
+
+        div.menu {
+            background-color: #eee !important;
+            min-height: 35px;
+            height: 35px;
+            z-index: 99;
+            border-bottom: 0.5px solid #ccc;
+        }
+
+        footer {
+            height: 4%;
+        }
+
+        .header, div.menu, footer {
+            color: black;
+            width: 100%;
+            margin: 0;
+        }
+
+        div.menu, footer {
+            display: block;
+        }
+
+        footer {
+            padding: 10px;
+            position: absolute;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+            background-color: #ccc;
+        }
+
+        .full {
+            width: 100% !important;
+        }
+
+        a.btn-primary {
+            background-color: #ffe3e3 !important;
+            color: red;
+        }
+
+            a.btn-primary:hover {
+                border-color: #f10001 !important;
+                color: #f10001 !important;
+            }
+
+        a.btn-info:hover {
+            border-color: #f10001 !important;
+            background-color: #ffe3e3 !important;
+            color: red !important;
+        }
+
+        .btn-info {
+            background-color: #f10001;
+            color: #fff !important;
+        }
+
+        nav.navbar {
+            background-color: #ddd;
+        }
+
+        a {
+            color: #ccc;
+        }
+
+            a:hover {
+                color: #fff;
+            }
+
+        li.active a {
+            color: #F10001;
+            border: 0.5px solid #F10001;
+            border-bottom: none;
+        }
+
+        li.nav-item > a {
+            color: #352315;
+            font-weight: bolder;
+        }
+
+        .highlight-text {
+            background-color: #f10001;
+            color: #333;
+        }
+
+        .navbar-brand img {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        #navbar {
+            padding-left: 75px;
+        }
+
+        nav {
+            border-bottom: 0.5px solid #999;
+        }
+
+        .firstDiv, .secondDiv {
+            border-bottom: 0.5px solid #ccc;
+        }
+
+        body {
+            font-family: "Segoe UI Symbol" !important;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            color: #f10001 !important;
+            background-color: #fff !important;
+            background-image: none;
+        }
+
+        .error-span {
+            font-size: x-small;
+            color: #f10001 !important;
+            padding: 0;
+            margin: 0;
+            height: 11px;
+            display: block;
+        }
+
+        .error {
+            border: 1px solid #f10001;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            background-color: #f10001 !important;
+            color: #fff !important;
+            background-image: none;
+        }
+
+        table.dataTable thead th, table.dataTable tfoot th, #grid_info {
+            font-weight: inherit;
+            color: red;
+        }
+
+        .profile svg {
+            color: #fff;
+            font-size: 28px;
+        }
+
+        #menu {
+            cursor: pointer;
+        }
+
+        .profile:hover > div {
+            display: block;
+        }
+
+        #menuDiv {
+            position: fixed;
+            right: 0;
+            padding: 15px;
+            top: 54px;
+            text-align: center;
+            color: #352315;
+            background-color: #f4f4f4;
+            text-decoration: none;
+        }
+
+        #menu i {
+            color: #352315;
+        }
+
+        #menuDiv > div {
+            margin: 0 auto;
+            padding: 3px;
+        }
+
+        .menu > div > a:visited {
+            border: 0.5px solid #f10001;
+        }
+
+        .menu > div > a:hover {
+            background-color: #f10001 !important;
+            color: #fff !important;
+        }
+
+        main.container {
+            margin: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+        }
+
+        a.btn-primary, a.btn-info {
+            border-radius: 0 !important;
+            border-color: #ccc !important;
+        }
+
+        .require-star::after {
+            content: '*';
+        }
+    </style>
+</head>
+
+<body style="padding-top: 3rem;">
+    <div id="tableLoc">
+        <input type="hidden" value="There is no contents" id="emptyTableLoc" />
+        <input type="hidden" value="Showing _START_ to _END_ of _TOTAL_ entries" id="showingCountLoc" />
+        <input type="hidden" value="Show _MENU_ Rows" id="lengthMenuLoc" />
+        <input type="hidden" value="Processing" id="processing" />
+        <input type="hidden" value="Searching" id="searchingLoc" />
+        <input type="hidden" value="DeleteConfirm" id="deleteMessage" />
+        <input type="hidden" value="DeleteConfirmMessage" id="deleteConfirmMessage" />
+        <input type="hidden" value="Sort descinding" id="SortDescinding" />
+        <input type="hidden" value="Click to sort" id="Sorting" />
+        <input type="hidden" value="Sort ascinding" id="SortAscinding" />
+        <input type="hidden" value="Yes" id="yes" />
+        <input type="hidden" value="No" id="no" />
+        <input type="hidden" value="10" id="gridPageSize" />
+    </div>
+    <div id="o-m-loader" class="hidden">
+        <div class="m-loader"></div>
+        <div class="m-opacity"></div>
+    </div>
+    <nav class="navbar fixed-top navbar-expand-md">
+        <a class="navbar-brand" title="Star Track" href="/"><img height="56" width="100" src="~/images/‏‏main-Logo2.jpeg" /></a>
+
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @{ 
+            var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+        }
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="@(controllerName=="Home"? "active":"") nav-item"><a href="@Url.Action("Index","Home")" class="nav-link">Dashboard</a></li>
+                <li class="@(controllerName=="Assets"? "active":"") nav-item"><a href="@Url.Action("Index","Assets")" class="nav-link">Assets</a></li>
+                <li class="@(controllerName=="LookUp"? "active":"") nav-item"><a href="@Url.Action("Index","LookUp")" class="nav-link">Views</a></li>
+                @*<li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>*@
+            </ul>
+        </div>
+        <div>
+            <div class="profile">
+                <a id="menu" href="javaScript:showMenu()"><i class="fas fa-user-circle"></i></a>
+                <div id="menuDiv" class="hidden">
+                    <div>Welcome @Session["FULLNAME"]</div>
+                    <div>@DateTime.Now.ToString("dd/MM/yyyy HH:mm")</div>
+                    <div style="margin-top: 10px;"><a class="btn btn-info" href="@Url.Action("SignOut","Account")">LogOut</a></div>
+                </div>
+            </div>
+
+
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
+    <footer>
+        <div>
+            <div>StartTrack - Tag &amp; Track solution | a product by Kingscote &copy; @DateTime.Now.Year</div>
+
+        </div>
+    </footer>
+    @RenderSection("scripts", required: false)
+    <script>
+        function showMenu() {
+            if ($('#menuDiv').hasClass('hidden'))
+                $('#menuDiv').removeClass('hidden');
+            else
+                $('#menuDiv').addClass('hidden');
+        }
+    </script>
+</body>
+
+</html>

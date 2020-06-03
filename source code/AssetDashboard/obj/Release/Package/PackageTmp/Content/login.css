@@ -1,0 +1,104 @@
+﻿body {
+    font-family: "Segoe UI Symbol" !important;
+}
+header, footer {
+    display: block;
+    width: 100%;
+    background-color: #F10001;
+    height: 3%;
+    min-height:30px; 
+    margin: 0;
+    padding: 0;
+}
+ 
+label{
+    font-size:smaller;
+    display:table;
+    margin-top:3%;
+}
+#loginBtn {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    font-size: larger;
+    padding-left: 30px;
+    background-color: #f10001;
+    color: white;
+    border: 1px solid #f10001;
+}
+
+input {
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding: 10px 50px;
+    width: 100%;
+    font-size: larger;
+    border: 1px solid #f10001;
+    color: #999;
+}
+ 
+    footer.relative{
+    }
+    section {
+        padding: 6.53% 2%;
+    }
+.icons {
+    position: absolute;
+    font-size: 23px;
+    margin-top: 1.5%;
+    left: 30%;
+    color: #999;
+}
+.icons2{
+    color:white;
+}
+.login-page {
+    background-color: #fff !important;
+    display: block;
+    padding: 1px;
+    width: 50%;
+    margin: 0 auto;
+}
+#ImageDiv > section.logo-section {
+    text-align: center;
+    padding-top:15%;
+    padding-bottom:1%;
+}
+.product-info {
+    text-align: center;
+    padding:0;
+}
+.header-section{
+
+}
+.login-form{
+
+}
+.main-features{
+
+}
+.form{
+    height:89%;
+}
+#loginform {
+    padding: 2.2%;
+}
+#ImageDiv {
+
+}
+#ImageDiv > section{
+}
+#main-Div{
+    margin:0;
+    padding:0;
+    height:100%;
+}
+#LoginDiv {
+    background:#eee;
+}
+img{
+    max-width:89% !important;
+    margin:0 auto;
+}
+#LoginDiv > section {
+}

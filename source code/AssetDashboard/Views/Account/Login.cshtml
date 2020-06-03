@@ -1,0 +1,91 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>StarTrack @@ ALB - Kingscote</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script src="~/Content/fontawesome/js/all.min.js"></script>
+    <link href="~/Content/fontawesome/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+   
+    <div id="main-Div" class="row col-md-12">
+
+        <div id="LoginDiv" class="col-md-6 right-float">
+
+        </div>
+        <div id="ImageDiv" class="col-md-6 left-float">
+            <section class="logo-section">
+                <img width="300" src="~/images/main-Logo.jpeg" />
+            </section>
+            <section class="login-form">
+                <div class="login-page">
+                    <div class="form">
+                        <form id="loginform" method="post" action="@Url.Action("LoginPost","Account")">
+                            <div class="left-float">
+                                <label>Username</label>
+                                <input name="Username" id="Username" type="text" placeholder="Username" required />
+                                <i class="icons fas fa-user"></i>
+                            </div>
+                            <div class="left-float">
+                                <label>Password </label>
+                                <input name="Password" id="Password" type="password" placeholder="Password" required />
+                                <i class="icons fas fa-lock"></i>
+                            </div>
+                            <div class="right-float">
+                                <p style="color:#f10001">&ensp;@ViewBag.Error </p>
+                                <a id="loginBtn" class="btn" href="javaScript:formSumbition()">
+                                    Login
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <i class="fas fa-arrow-right icons2"></i>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section class="product-info">
+                <p>Version: 1.01</p>
+                <p>Licence To: Shera Foods.</p>
+                <br>
+                <br>
+                <img src="~/images/kingscote-logo.png" width="120" >
+                <p>A product by Kingscote Inc. &copy; 2020</p>
+            </section>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('#Username').focus();
+            $('#Password').keyup(function (e) {
+                if (e.key === "Enter") {
+                    formSumbition();
+                }
+            });
+        });
+        function formSumbition() {
+            $('#loginform').submit();
+        }
+    </script>
+
+</body>
+</html>

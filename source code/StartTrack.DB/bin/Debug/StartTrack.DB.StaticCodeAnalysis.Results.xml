@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Problems>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0014</Rule>
+    <ProblemDescription>Data loss might occur when casting from VarChar(10) to NVarChar(11).</ProblemDescription>
+    <SourceFile>D:\G\Work\Code\drive-download-20200324T230023Z-001\AssetDashboard\StartTrack.DB\dbo\Stored Procedures\r_Asset_List.sql</SourceFile>
+    <Line>47</Line>
+    <Column>27</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+  <Problem>
+    <Rule>Microsoft.Rules.Data.SR0014</Rule>
+    <ProblemDescription>Data loss might occur when casting from VarChar(10) to NVarChar(11).</ProblemDescription>
+    <SourceFile>D:\G\Work\Code\drive-download-20200324T230023Z-001\AssetDashboard\StartTrack.DB\dbo\Stored Procedures\r_Asset_List.sql</SourceFile>
+    <Line>129</Line>
+    <Column>28</Column>
+    <Severity>Warning</Severity>
+  </Problem>
+</Problems>

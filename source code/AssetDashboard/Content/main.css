@@ -1,0 +1,114 @@
+﻿#o-m-loader, #o-m-loader > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.hidden{
+    display:none;
+}
+#o-m-loader {
+    position: fixed;
+    z-index: 9235;
+}
+
+#o-m-loader {
+    position: fixed;
+    z-index: 9235;
+}
+
+.m-loader {
+    background: url(../../images/loader.gif) no-repeat center center;
+    z-index: 299;
+}
+
+
+.m-opacity {
+    background: #fff;
+    opacity: 0.5;
+    z-index: 99998;
+}
+
+body {
+    font-family: Montserrat;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+a.lang-link {
+    line-height: 45px;
+    position: absolute;
+    text-decoration: none;
+    right: 50px;
+}
+
+input.jscolor {
+    cursor: pointer;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+span.error-span {
+    font-size: small;
+    color: red;
+}
+
+#searchDiv {
+    padding: 6px 20px;
+}
+
+    #searchDiv *:not(.isolate) {
+        font-weight: bold;
+        display: inline-table;
+    }
+
+    #searchDiv *:not([type=button]) {
+        width: 20%;
+    }
+
+    #searchDiv input[type=button] {
+        width: 10%;
+    }
+
+input[type=checkbox].big-checkbox {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+table.table {
+    border: 1px solid;
+}
+
+    table.table thead {
+        background-color: #ccc;
+    }
+
+.navbar-fixed-top {
+    padding-left: 120px;
+}
+
+.navbar.navbar-fixed-top {
+    background-color: #ED2226;
+}
+
+body > div.navbar.navbar-fixed-top > div > div.navbar-collapse.collapse > ul > li > a, a.lang-link {
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+h2 {
+    background-color: #939192;
+    color: red;
+    padding-left: 50px;
+}

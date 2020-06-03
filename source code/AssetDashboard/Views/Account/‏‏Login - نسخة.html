@@ -1,0 +1,92 @@
+﻿
+
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>StarTrack @@ ALB - Kingscote</title>
+    <script src="../../Scripts/jquery-3.4.1.min.js"></script>
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Content/login.css" rel="stylesheet" />
+</head>
+<body>
+   
+    <div id="main-Div" class="row col-md-12">
+        <div id="ImageDiv" class="col-md-6 left-float">
+            <section class="logo-section">
+                <img src="../../images/main-Logo.jpeg" />
+            </section>
+            <section class="product-info">
+                <h4>Start track is tag and track solution</h4>
+                <p>It is good project, it is good projectit is good projectit is good projectit is good projectit is good project</p>
+                <p>We can trust it At all</p>
+            </section>
+        </div>
+        <div id="LoginDiv" class="col-md-6 right-float">
+            <section class="header-section">
+                <h4>Start track is tag and track solution</h4>
+                <p>It is good project, it is good projectit is good projectit is good projectit is good projectit is good project</p>
+                <p>We can trust it At all</p>
+            </section>
+            <section class="login-form">
+                <div class="login-page">
+                    <header></header>
+                    <div class="form">
+                        <form id="loginform" method="post" action="">
+                            <div class="left-float">
+                                <label>Username</label>
+                                <input name="Username" id="Username" type="text" placeholder="Username" required />
+                            </div>
+                            <div class="left-float">
+                                <label>Password </label>
+                                <input name="Password" id="Password" type="password" placeholder="Password" required />
+                            </div>
+                            <div class="right-float">
+                                <h5 style="color:#f10001">&ensp;&ensp;&ensp;&ensp; </h5>
+                                <a id="loginBtn" class="btn btn-success" href="javaScript:formSumbition()">Login</a>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <footer class="relative"></footer>
+                </div>
+            </section>
+            <section class="main-features">
+                <h5>The Main feature are</h5>
+                <ul>
+                    <li>First One Is</li>
+                    <li>Second One Is</li>
+                    <li>Third One Is</li>
+                    <li>Fourth One Is</li>
+                    <li>Fifth One Is</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    
+
+
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            $('#Username').focus();
+            $('#Password').keyup(function (e) {
+                if (e.key === "Enter") {
+                    formSumbition();
+                }
+            });
+        });
+        function formSumbition() {
+            $('#loginform').submit();
+        }
+    </script>
+
+</body>
+</html>

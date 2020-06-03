@@ -1,0 +1,48 @@
+
+    body {
+    }
+
+section.locaion-item {
+    display: inline-grid;
+    padding: 5px;
+    width: 99%;
+    border: 0.5px solid #ccc;
+    margin-bottom:5px;
+}
+#locations section:nth-child(even) {
+    background:#fff;
+}
+#locations section:nth-child(odd) {
+    background: #ddd;
+}
+section.locaion-item > header {
+    border-bottom: solid 0.5px;
+    margin-bottom: 12px;
+    text-align: center;
+    font-size: large;
+    font-weight: 800;
+    background-color:#F10001;
+    color:#fff;
+    min-height:36px;
+    height:36px;
+}
+    section.locaion-item > div {
+        
+        text-align: center;
+    }
+        section.locaion-item > div > div { 
+            width: 21%; 
+            text-align: center;
+            display: inline-table;
+        }
+
+h1 {
+    text-align: center;
+    text-align: center;
+    background: #ccc;
+    padding: 5px; 
+}
+main {
+    width: 99%;
+    padding: 10px;
+}
