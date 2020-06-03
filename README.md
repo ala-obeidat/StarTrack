@@ -1,5 +1,5 @@
 # StarTrack
- **IoT application** Tag & Track Soultion using RFID technology.
+ **IoT application** Tag & Track Solution using RFID technology.
  
 
 ## Technology Used for projects:
